@@ -1,26 +1,105 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+@layer utilities {
+  .rounded-button { border-radius: var(--radius-button); }
+  .rounded-card   { border-radius: var(--radius-card); }
+  .shadow-card    { box-shadow: var(--shadow-card); }
+  .shadow-soft    { box-shadow: var(--shadow-soft); }
+}
+
+/* ================= TOKENS ================= */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ——— цветовая палитра (из UI Kit, близкие значения; легко поправить) ——— */
+  --ink-900: 25 28 45; /* #191C2D — основной текст */
+  --ink-800: 41 44 68; /* #292C44 */
+  --ink-700: 58 62 92; /* #3A3E5C — заголовки/навигация */
+  --ink-600: 88 92 120; /* #585C78 */
+  --ink-500: 112 116 140; /* #70748C — вторичный текст */
+
+  --surface-50: 237 239 252; /* #EDEFFC — фон блоков/футера */
+  --surface-100: 216 220 243; /* #D8DCF3 — промо-полоска */
+  --surface-200: 230 233 250; /* тонкие заливки */
+  --surface-900: 10 10 16; /* тёмная тема, если понадобится */
+
+  --primary: 33 37 41; /* #212529 — чёрная кнопка и тексты в бейджах */
+  --primary-600: 33 37 41;
+  --primary-700: 0 0 0;
+
+  --accent-blue: 90 121 190; /* #5A79BE — кнопки-купон в баннере */
+  --accent-lavender: 131 141 203; /* #838DCB — бордеры/ховеры */
+  --accent-orange: 238 133 96; /* #EE8560 — бейдж “OFERTA” */
+  --accent-green: 69 152 101; /* #459865 — успех */
+  --accent-red: 226 78 78; /* #E24E4E — ошибка */
+
+  --line: 210 214 235; /* #D2D6EB — бордеры */
+
+  /* ——— радиусы/тени ——— */
+  --radius-card: 24px;
+  --radius-button: 12px;
+  --shadow-card: 0 12px 32px rgba(17, 23, 41, 0.08);
+  --shadow-soft: 0 8px 24px rgba(17, 23, 41, 0.06);
+
+  /* ——— типографика ——— */
+  --fs-h1: 56px;
+  --lh-h1: 64px;
+  --ls-h1: -0.02em;
+  --fw-h1: 700;
+  --fs-h2: 32px;
+  --lh-h2: 40px;
+  --ls-h2: -0.01em;
+  --fw-h2: 700;
+  --fs-h3: 22px;
+  --lh-h3: 30px;
+  --ls-h3: 0;
+  --fw-h3: 600;
+  --fs-body: 16px;
+  --lh-body: 26px;
+  --fs-small: 14px;
+  --lh-small: 22px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Script заголовки */
+.h-script {
+  font-family: var(--font-script);
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ====== UI atoms ====== */
+@layer components {
+  .container-max {
+    @apply max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  .btn {
+    @apply inline-flex items-center justify-center h-11 px-5 rounded-button text-sm font-semibold transition;
+  }
+  .btn-primary {
+    @apply bg-ink-900 text-white hover:opacity-90;
+  }
+  .btn-outline {
+    @apply border border-ink-900 text-ink-900 hover:bg-ink-900 hover:text-white;
+  }
+  .btn-blue {
+    @apply bg-accent-blue text-white hover:opacity-90 rounded-md h-9 px-3 text-[13px];
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-medium tracking-wide;
+  }
+  .badge-sale {
+    @apply bg-accent-orange/15 text-accent-orange;
+  }
+  .badge-new {
+    @apply bg-accent-blue/15 text-accent-blue;
+  }
+  .badge-last {
+    @apply bg-ink-700/10 text-ink-700;
+  }
+
+  .input-underline {
+    @apply w-full bg-transparent outline-none border-b border-ink-900/40 py-2 placeholder:text-ink-500;
+  }
 }
