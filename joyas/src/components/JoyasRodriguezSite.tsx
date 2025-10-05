@@ -20,67 +20,46 @@ export default function JoyasRodriguezSite() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const products = useMemo(
-    () => [
-      {
-        id: 1,
-        name: "Luna Necklace",
-        price: "€129",
-        image:
-          "https://images.unsplash.com/photo-1617038260897-41a1fc8a2b65?q=80&w=1600&auto=format&fit=crop",
-      },
-      {
-        id: 2,
-        name: "Sol Ring",
-        price: "€159",
-        image:
-          "https://images.unsplash.com/photo-1599643477580-2f9fe622ed3c?q=80&w=1600&auto=format&fit=crop",
-      },
-      {
-        id: 3,
-        name: "Astra Earrings",
-        price: "€89",
-        image:
-          "https://images.unsplash.com/photo-1612392061789-9b0c7a40c8a4?q=80&w=1600&auto=format&fit=crop",
-      },
-      {
-        id: 4,
-        name: "Noble Bracelet",
-        price: "€119",
-        image:
-          "https://images.unsplash.com/photo-1603566234499-965bb6fbd823?q=80&w=1600&auto=format&fit=crop",
-      },
-      {
-        id: 5,
-        name: "Orion Pendant",
-        price: "€139",
-        image:
-          "https://images.unsplash.com/photo-1601924582971-b0d03b32b1ae?q=80&w=1600&auto=format&fit=crop",
-      },
-      {
-        id: 6,
-        name: "Serene Hoops",
-        price: "€99",
-        image:
-          "https://images.unsplash.com/photo-1611591437281-460bfbe120a2?q=80&w=1600&auto=format&fit=crop",
-      },
-      {
-        id: 7,
-        name: "Muse Choker",
-        price: "€149",
-        image:
-          "https://images.unsplash.com/photo-1520962918287-7448c2878f65?q=80&w=1600&auto=format&fit=crop",
-      },
-      {
-        id: 8,
-        name: "Halo Ring",
-        price: "€179",
-        image:
-          "https://images.unsplash.com/photo-1611224885990-52b7d610b0ee?q=80&w=1600&auto=format&fit=crop",
-      },
-    ],
-    []
-  );
+  const products = [
+    {
+      id: 1,
+      name: "Luna Necklace",
+      price: "€129",
+      image: "/images/product-1.jpg",
+    },
+    { id: 2, name: "Sol Ring", price: "€159", image: "/images/product-2.jpg" },
+    {
+      id: 3,
+      name: "Astra Earrings",
+      price: "€89",
+      image: "/images/product-3.jpg",
+    },
+    {
+      id: 4,
+      name: "Noble Bracelet",
+      price: "€119",
+      image: "/images/product-4.jpg",
+    },
+    {
+      id: 5,
+      name: "Orion Pendant",
+      price: "€139",
+      image: "/images/product-5.jpg",
+    },
+    {
+      id: 6,
+      name: "Serene Hoops",
+      price: "€99",
+      image: "/images/product-6.jpg",
+    },
+    {
+      id: 7,
+      name: "Muse Choker",
+      price: "€149",
+      image: "/images/product-7.jpg",
+    },
+    { id: 8, name: "Halo Ring", price: "€179", image: "/images/product-8.jpg" },
+  ];
 
   return (
     <div className={dark ? "dark" : ""}>
@@ -265,11 +244,14 @@ export default function JoyasRodriguezSite() {
                 >
                   <div className="w-[32rem] h-[32rem] bg-gradient-to-br from-amber-200 to-rose-200 rounded-full translate-x-20 translate-y-10" />
                 </div>
-                <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-neutral-900/5 dark:ring-white/10">
+
+                <div className="aspect-[4/5] rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 relative">
                   <Image
-                    className="w-full h-full object-cover"
-                    alt="Модель с украшениями JoyasRodriguez"
-                    src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop"
+                    src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1600&auto=format&fit=crop"
+                    alt="Процесс ручного изготовления украшений"
+                    fill
+                    className="object-cover"
+                    sizes="(min-width:1024px) 50vw, 100vw"
                   />
                 </div>
               </div>
@@ -345,11 +327,13 @@ export default function JoyasRodriguezSite() {
                   key={p.id}
                   className="group rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900"
                 >
-                  <div className="aspect-square overflow-hidden">
+                  <div className="aspect-square overflow-hidden relative">
                     <Image
                       src={p.image}
                       alt={p.name}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      sizes="(min-width:1280px) 25vw, (min-width:768px) 33vw, 50vw"
                     />
                   </div>
                   <div className="p-4">
@@ -438,11 +422,13 @@ export default function JoyasRodriguezSite() {
               </div>
             </div>
             <div className="order-1 lg:order-2">
-              <div className="aspect-[4/5] rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900">
+              <div className="aspect-[4/5] rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 relative">
                 <Image
-                  className="w-full h-full object-cover"
-                  alt="Процесс ручного изготовления украшений"
                   src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1600&auto=format&fit=crop"
+                  alt="Процесс ручного изготовления украшений"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width:1024px) 50vw, 100vw"
                 />
               </div>
             </div>
